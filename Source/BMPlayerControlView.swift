@@ -207,7 +207,7 @@ open class BMPlayerControlView: UIView {
         self.resource = resource
         self.selectedIndex = index
         titleLabel.text = resource.name
-   //     prepareChooseDefinitionView()
+        prepareChooseDefinitionView()
         autoFadeOutControlViewWithAnimation()
     }
     
@@ -258,12 +258,12 @@ open class BMPlayerControlView: UIView {
               if wSelf.isFullscreen { wSelf.chooseDefinitionView.alpha = 1.0 }
           } else {
               wSelf.replayButton.isHidden = true
-//              wSelf.chooseDefinitionView.snp.updateConstraints { (make) in
-//                  make.height.equalTo(35)
-//              }
+              wSelf.chooseDefinitionView.snp.updateConstraints { (make) in
+                  make.height.equalTo(35)
+              }
               wSelf.chooseDefinitionView.alpha = 0.0
           }
-      //    wSelf.layoutIfNeeded()
+          wSelf.layoutIfNeeded()
         }) { [weak self](_) in
             if isShow {
                 self?.autoFadeOutControlViewWithAnimation()
@@ -631,20 +631,20 @@ open class BMPlayerControlView: UIView {
     
     func addSnapKitConstraint()
     {
-        mainMaskView.backgroundColor = .blue
-        bottomMaskView.backgroundColor = .red
-        mainMaskView.frame = CGRect(x: 0, y: toppadding, width: UIScreen.main.bounds.size.width , height: UIScreen.main.bounds.size.height-bottompadding)
+     
+        mainMaskView.frame = CGRect(x: 0, y: toppadding, width: UIScreen.main.bounds.size.width , height: UIScreen.main.bounds.size.height-(bottompadding + toppadding))
         maskImageView.frame = maskImageView.frame
         topMaskView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         topWrapperView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
-        bottomMaskView.frame = CGRect(x: 0, y: mainMaskView.frame.size.height/2.0, width: mainMaskView.frame.size.width, height: 50)
+        bottomMaskView.frame = CGRect(x: 0, y: mainMaskView.frame.size.height - 50, width: mainMaskView.frame.size.width, height: 50)
         bottomWrapperView.frame =  CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         backButton.frame = CGRect(x: 10, y: 0, width: 40, height: 40)
         
-        playButton.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+        playButton.frame = CGRect(x: 10, y: 50/2.0 - 30.0/2.0, width: 30, height: 30)
         timeSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.size.width + 10, y: 50/2.0 - 30.0/2.0, width: mainMaskView.frame.size.width - (playButton.frame.origin.x + playButton.frame.size.width + 20), height: 30)
         loadingIndicator.frame = CGRect(x: mainMaskView.frame.size.width/2.0 - loadingIndicator.frame.size.width/2.0, y: mainMaskView.frame.size.height/2.0 - loadingIndicator.frame.size.height/2.0, width: loadingIndicator.frame.size.width, height: loadingIndicator.frame.size.height)
         
+        progressView.frame = CGRect(x: timeSlider.frame.origin.x, y: timeSlider.frame.size.width/2.0 - 2.0/2.0, width: timeSlider.frame.size.width, height: 2.0)
         replayButton.frame = CGRect(x: mainMaskView.frame.size.width/2.0 - 50/2.0, y: mainMaskView.frame.size.height/2.0 - 50/2.0, width: 50, height: 50)
         
         // Main mask view
@@ -782,7 +782,7 @@ open class BMPlayerControlView: UIView {
 //            make.bottom.equalTo(self.subtitleBackView.snp.bottom).offset(-2)
 //        }
         
-        print("bottom view ",bottomMaskView.frame)
+        
         print("main ...",mainMaskView.frame)
     }
     
