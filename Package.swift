@@ -24,9 +24,6 @@ let package = Package(
             path: "Source",
             exclude: [
                 "Info.plist"
-            ],
-            resources: [
-                .process("Assets"),.process("Resources")
             ]
         )
     ],
