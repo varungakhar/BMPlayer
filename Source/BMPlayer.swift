@@ -401,13 +401,15 @@ open class BMPlayer: UIView {
             controlView = BMPlayerControlView()
         }
         
+        controlView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        
         addSubview(controlView)
         controlView.updateUI(isFullScreen)
         controlView.delegate = self
         controlView.player   = self
-        controlView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self)
-        }
+//        controlView.snp.makeConstraints { (make) in
+//            make.edges.equalTo(self)
+//        }
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panDirection(_:)))
         self.addGestureRecognizer(panGesture)
@@ -428,12 +430,13 @@ open class BMPlayer: UIView {
     
     fileprivate func preparePlayer() {
         playerLayer = BMPlayerLayerView()
+        playerLayer?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         playerLayer!.videoGravity = videoGravity
         insertSubview(playerLayer!, at: 0)
-        playerLayer!.snp.makeConstraints { [weak self](make) in
-          guard let `self` = self else { return }
-          make.edges.equalTo(self)
-        }
+//        playerLayer!.snp.makeConstraints { [weak self](make) in
+//          guard let `self` = self else { return }
+//          make.edges.equalTo(self)
+//        }
         playerLayer!.delegate = self
         controlView.showLoader()
         self.layoutIfNeeded()
