@@ -530,7 +530,7 @@ open class BMPlayerControlView: UIView {
         mainMaskView.addSubview(bottomMaskView)
         mainMaskView.insertSubview(maskImageView, at: 0)
         mainMaskView.clipsToBounds = true
-        mainMaskView.backgroundColor = UIColor(white: 0, alpha: 0.4 )
+        mainMaskView.backgroundColor = UIColor.clear
         
         // Top views
         topMaskView.addSubview(topWrapperView)
