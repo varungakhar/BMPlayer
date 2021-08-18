@@ -220,14 +220,17 @@ open class BMPlayerControlView: UIView {
      auto fade out controll view with animtion
      */
     open func autoFadeOutControlViewWithAnimation() {
-        cancelAutoFadeOutAnimation()
-        delayItem = DispatchWorkItem { [weak self] in
-            if self?.playerLastState != .playedToTheEnd {
-                self?.controlViewAnimation(isShow: false)
+        if  BMPlayerConf.isLive == false
+        {
+            cancelAutoFadeOutAnimation()
+            delayItem = DispatchWorkItem { [weak self] in
+                if self?.playerLastState != .playedToTheEnd {
+                    self?.controlViewAnimation(isShow: false)
+                }
             }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + BMPlayerConf.animateDelayTimeInterval,
+                                          execute: delayItem!)
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + BMPlayerConf.animateDelayTimeInterval,
-                                      execute: delayItem!)
     }
     
     /**
@@ -412,10 +415,13 @@ open class BMPlayerControlView: UIView {
      - parameter gesture: tap gesture
      */
     @objc open func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
-        if playerLastState == .playedToTheEnd {
-            return
+        if BMPlayerConf.isLive == false
+        {
+            if playerLastState == .playedToTheEnd {
+                return
+            }
+            controlViewAnimation(isShow: !isMaskShowing)
         }
-        controlViewAnimation(isShow: !isMaskShowing)
     }
     
     @objc open func onDoubleTapGestureRecognized(_ gesture: UITapGestureRecognizer) {
