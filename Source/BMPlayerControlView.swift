@@ -630,6 +630,9 @@ open class BMPlayerControlView: UIView {
     func addSnapKitConstraint()
     {
         
+        print("frame....",self.frame)
+        print("frame checj....",self.player?.frame)
+        
         backButton.frame = CGRect(x: 10, y: 0, width: 40, height: 40)
         
         // Main mask view
