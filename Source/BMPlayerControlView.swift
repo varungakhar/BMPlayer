@@ -786,7 +786,7 @@ open class BMPlayerControlView: UIView {
 //        }
         
         
-        print("main ...",mainMaskView.frame)
+       // print("main ...",mainMaskView.frame)
     }
     
     fileprivate func BMImageResourcePath(_ fileName: String) -> UIImage? {
