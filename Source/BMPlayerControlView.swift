@@ -263,7 +263,7 @@ open class BMPlayerControlView: UIView {
 //              }
               wSelf.chooseDefinitionView.alpha = 0.0
           }
-          wSelf.layoutIfNeeded()
+      //    wSelf.layoutIfNeeded()
         }) { [weak self](_) in
             if isShow {
                 self?.autoFadeOutControlViewWithAnimation()
