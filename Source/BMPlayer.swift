@@ -25,7 +25,7 @@ public protocol BMPlayerDelegate : class {
  - horizontal: horizontal
  - vertical:   vertical
  */
-open enum BMPanDirection: Int {
+public enum BMPanDirection: Int {
     case horizontal = 0
     case vertical   = 1
 }

@@ -762,7 +762,8 @@ open class BMPlayerControlView: UIView {
     
     fileprivate func BMImageResourcePath(_ fileName: String) -> UIImage? {
     //    let bundle = Bundle(for: BMPlayer.self)
-        return UIImage(named: fileName)
+        let image = UIImage(named: fileName)
+        return image
     }
 }
 
