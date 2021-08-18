@@ -71,43 +71,43 @@ open class BMPlayer: UIView {
     
     open var playerLayer: BMPlayerLayerView?
     
-    fileprivate var resource: BMPlayerResource!
+    open var resource: BMPlayerResource!
     
-    fileprivate var currentDefinition = 0
+    open var currentDefinition = 0
     
-    fileprivate var controlView: BMPlayerControlView!
+    open var controlView: BMPlayerControlView!
     
-    fileprivate var customControlView: BMPlayerControlView?
+    open var customControlView: BMPlayerControlView?
     
-    fileprivate var isFullScreen:Bool {
+    open var isFullScreen:Bool {
         get {
             return UIApplication.shared.statusBarOrientation.isLandscape
         }
     }
     
     /// 滑动方向
-    fileprivate var panDirection = BMPanDirection.horizontal
+    open var panDirection = BMPanDirection.horizontal
     
     /// 音量滑竿
-    fileprivate var volumeViewSlider: UISlider!
+    open var volumeViewSlider: UISlider!
     
-    fileprivate let BMPlayerAnimationTimeInterval: Double             = 4.0
-    fileprivate let BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
+    open let BMPlayerAnimationTimeInterval: Double             = 4.0
+    open let BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
     
     /// 用来保存时间状态
-    fileprivate var sumTime         : TimeInterval = 0
-    fileprivate var totalDuration   : TimeInterval = 0
-    fileprivate var currentPosition : TimeInterval = 0
-    fileprivate var shouldSeekTo    : TimeInterval = 0
+    open var sumTime         : TimeInterval = 0
+    open var totalDuration   : TimeInterval = 0
+    open var currentPosition : TimeInterval = 0
+    open var shouldSeekTo    : TimeInterval = 0
     
-    fileprivate var isURLSet        = false
-    fileprivate var isSliderSliding = false
-    fileprivate var isPauseByUser   = false
-    fileprivate var isVolume        = false
-    fileprivate var isMaskShowing   = false
-    fileprivate var isSlowed        = false
-    fileprivate var isMirrored      = false
-    fileprivate var isPlayToTheEnd  = false
+    open var isURLSet        = false
+    open var isSliderSliding = false
+    open var isPauseByUser   = false
+    open var isVolume        = false
+    open var isMaskShowing   = false
+    open var isSlowed        = false
+    open var isMirrored      = false
+    open var isPlayToTheEnd  = false
     //视频画面比例
     fileprivate var aspectRatio: BMPlayerAspectRatio = .default
     
