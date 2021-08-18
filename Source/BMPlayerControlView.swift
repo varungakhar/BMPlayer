@@ -644,7 +644,7 @@ open class BMPlayerControlView: UIView {
         
         totalTimeLabel.frame = CGRect(x: mainMaskView.frame.size.width - (50 + 10), y: 50/2.0 - 30.0/2.0, width: 50, height: 30)
         
-        timeSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.size.width + 5, y: 50/2.0 - 30.0/2.0, width: totalTimeLabel.frame.size.width - (playButton.frame.origin.x + playButton.frame.size.width + 10), height: 30)
+        timeSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.size.width + 5, y: 50/2.0 - 30.0/2.0, width: totalTimeLabel.frame.origin.x - (playButton.frame.origin.x + playButton.frame.size.width + 10), height: 30)
         loadingIndicator.frame = CGRect(x: mainMaskView.frame.size.width/2.0 - loadingIndicator.frame.size.width/2.0, y: mainMaskView.frame.size.height/2.0 - loadingIndicator.frame.size.height/2.0, width: loadingIndicator.frame.size.width, height: loadingIndicator.frame.size.height)
         
         progressView.frame = CGRect(x: timeSlider.frame.origin.x, y: timeSlider.frame.size.width/2.0 - 2.0/2.0, width: timeSlider.frame.size.width, height: 2.0)
