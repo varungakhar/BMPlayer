@@ -712,11 +712,11 @@ open class BMPlayerControlView: UIView {
             make.height.equalTo(2)
         }
         
-        totalTimeLabel.snp.makeConstraints { [unowned self](make) in
-            make.centerY.equalTo(self.playButton)
-            make.left.equalTo(self.timeSlider.snp.right).offset(5)
-            make.width.equalTo(40)
-        }
+//        totalTimeLabel.snp.makeConstraints { [unowned self](make) in
+//            make.centerY.equalTo(self.playButton)
+//            make.left.equalTo(self.timeSlider.snp.right).offset(5)
+//            make.width.equalTo(40)
+//        }
     
 //        fullscreenButton.snp.makeConstraints { [unowned self](make) in
 //            make.width.equalTo(50)
@@ -766,6 +766,9 @@ open class BMPlayerControlView: UIView {
             make.top.equalTo(self.subtitleBackView.snp.top).offset(2)
             make.bottom.equalTo(self.subtitleBackView.snp.bottom).offset(-2)
         }
+        
+        
+        print("main ...",mainMaskView.frame)
     }
     
     fileprivate func BMImageResourcePath(_ fileName: String) -> UIImage? {
