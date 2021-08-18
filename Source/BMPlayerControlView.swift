@@ -207,7 +207,7 @@ open class BMPlayerControlView: UIView {
         self.resource = resource
         self.selectedIndex = index
         titleLabel.text = resource.name
-        prepareChooseDefinitionView()
+   //     prepareChooseDefinitionView()
         autoFadeOutControlViewWithAnimation()
     }
     
@@ -258,9 +258,9 @@ open class BMPlayerControlView: UIView {
               if wSelf.isFullscreen { wSelf.chooseDefinitionView.alpha = 1.0 }
           } else {
               wSelf.replayButton.isHidden = true
-              wSelf.chooseDefinitionView.snp.updateConstraints { (make) in
-                  make.height.equalTo(35)
-              }
+//              wSelf.chooseDefinitionView.snp.updateConstraints { (make) in
+//                  make.height.equalTo(35)
+//              }
               wSelf.chooseDefinitionView.alpha = 0.0
           }
           wSelf.layoutIfNeeded()
