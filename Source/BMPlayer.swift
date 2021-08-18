@@ -11,7 +11,7 @@ import SnapKit
 import MediaPlayer
 
 /// BMPlayerDelegate to obserbe player state
-public protocol BMPlayerDelegate : class {
+public protocol BMPlayerDelegate : AnyObject {
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState)
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval)
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime : TimeInterval, totalTime: TimeInterval)
@@ -277,20 +277,25 @@ open class BMPlayer: UIView {
             // 比如水平移动结束时，要快进到指定位置，如果这里没有判断，当我们调节音量完之后，会出现屏幕跳动的bug
             switch (self.panDirection) {
             case BMPanDirection.horizontal:
-                controlView.hideSeekToView()
-                isSliderSliding = false
-                if isPlayToTheEnd {
-                    isPlayToTheEnd = false
-                    seek(self.sumTime, completion: {[weak self] in
-                        self?.play()
-                    })
-                } else {
-                    seek(self.sumTime, completion: {[weak self] in
-                        self?.autoPlay()
-                    })
+                if BMPlayerConf.enablePlaytimeGestures {
+                    
+                    controlView.hideSeekToView()
+                    isSliderSliding = false
+                    if isPlayToTheEnd {
+                        isPlayToTheEnd = false
+                        seek(self.sumTime, completion: {[weak self] in
+                            self?.play()
+                        })
+                    } else {
+                        seek(self.sumTime, completion: {[weak self] in
+                            self?.autoPlay()
+                        })
+                    }
+                    // 把sumTime滞空，不然会越加越多
+                    self.sumTime = 0.0
+                    
                 }
-                // 把sumTime滞空，不然会越加越多
-                self.sumTime = 0.0
+               
                 
             case BMPanDirection.vertical:
                 self.isVolume = false
