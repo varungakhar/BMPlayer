@@ -637,11 +637,11 @@ open class BMPlayerControlView: UIView {
         maskImageView.frame = maskImageView.frame
         topMaskView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         topWrapperView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
-        bottomMaskView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
+        bottomMaskView.frame = CGRect(x: 0, y: 30, width: mainMaskView.frame.size.width, height: 50)
         bottomWrapperView.frame =  CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         backButton.frame = CGRect(x: 10, y: 0, width: 40, height: 40)
         
-        playButton.frame = CGRect(x: 10, y: 50/2.0 - 30.0/2.0, width: 30, height: 30)
+        playButton.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
         timeSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.size.width + 10, y: 50/2.0 - 30.0/2.0, width: mainMaskView.frame.size.width - (playButton.frame.origin.x + playButton.frame.size.width + 20), height: 30)
         loadingIndicator.frame = CGRect(x: mainMaskView.frame.size.width/2.0 - loadingIndicator.frame.size.width/2.0, y: mainMaskView.frame.size.height/2.0 - loadingIndicator.frame.size.height/2.0, width: loadingIndicator.frame.size.width, height: loadingIndicator.frame.size.height)
         
