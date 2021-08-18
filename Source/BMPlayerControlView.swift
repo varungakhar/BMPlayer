@@ -124,9 +124,11 @@ open class BMPlayerControlView: UIView {
      - parameter currentTime: current play time
      - parameter totalTime:   total duration
      */
-    open func playTimeDidChange(currentTime: TimeInterval, totalTime: TimeInterval) {
+    open func playTimeDidChange(currentTime: TimeInterval, totalTime: TimeInterval)
+    {
+        let interval = totalTime - currentTime
         currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
-        totalTimeLabel.text   = BMPlayer.formatSecondsToString(totalTime)
+        totalTimeLabel.text   = BMPlayer.formatSecondsToString(interval)
         timeSlider.value      = Float(currentTime) / Float(totalTime)
         showSubtile(from: resource?.subtitle, at: currentTime)
     }
@@ -248,7 +250,7 @@ open class BMPlayerControlView: UIView {
           guard let wSelf = self else { return }
           wSelf.topMaskView.alpha    = alpha
           wSelf.bottomMaskView.alpha = alpha
-          wSelf.mainMaskView.backgroundColor = UIColor(white: 0, alpha: isShow ? 0.4 : 0.0)
+            wSelf.mainMaskView.backgroundColor = UIColor(white: 0, alpha: isShow ? 0.0 : 0.0)
 
           if isShow {
               if wSelf.isFullscreen { wSelf.chooseDefinitionView.alpha = 1.0 }
@@ -434,7 +436,9 @@ open class BMPlayerControlView: UIView {
       hidePlayToTheEndView()
       cancelAutoFadeOutAnimation()
       let currentTime = Double(sender.value) * totalDuration
+      let interval = totalDuration - currentTime
       currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
+      totalTimeLabel.text = BMPlayer.formatSecondsToString(interval)
       delegate?.controlView(controlView: self, slider: sender, onSliderEvent: .valueChanged)
     }
     
@@ -539,11 +543,11 @@ open class BMPlayerControlView: UIView {
         // Bottom views
         bottomMaskView.addSubview(bottomWrapperView)
         bottomWrapperView.addSubview(playButton)
-        bottomWrapperView.addSubview(currentTimeLabel)
+   //     bottomWrapperView.addSubview(currentTimeLabel)
         bottomWrapperView.addSubview(totalTimeLabel)
         bottomWrapperView.addSubview(progressView)
         bottomWrapperView.addSubview(timeSlider)
-        bottomWrapperView.addSubview(fullscreenButton)
+     //   bottomWrapperView.addSubview(fullscreenButton)
         
         playButton.tag = BMPlayerControlView.ButtonType.play.rawValue
         playButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_play"),  for: .normal)
@@ -710,13 +714,13 @@ open class BMPlayerControlView: UIView {
             make.width.equalTo(40)
         }
     
-        fullscreenButton.snp.makeConstraints { [unowned self](make) in
-            make.width.equalTo(50)
-            make.height.equalTo(50)
-            make.centerY.equalTo(self.currentTimeLabel)
-            make.left.equalTo(self.totalTimeLabel.snp.right)
-            make.right.equalToSuperview()
-        }
+//        fullscreenButton.snp.makeConstraints { [unowned self](make) in
+//            make.width.equalTo(50)
+//            make.height.equalTo(50)
+//            make.centerY.equalTo(self.currentTimeLabel)
+//            make.left.equalTo(self.totalTimeLabel.snp.right)
+//            make.right.equalToSuperview()
+//        }
         
         loadingIndicator.snp.makeConstraints { [unowned self](make) in
             make.center.equalTo(self.mainMaskView)
