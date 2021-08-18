@@ -782,7 +782,7 @@ open class BMPlayerControlView: UIView {
 //            make.bottom.equalTo(self.subtitleBackView.snp.bottom).offset(-2)
 //        }
         
-        
+        print("bottom view ",bottomMaskView.frame)
         print("main ...",mainMaskView.frame)
     }
     
