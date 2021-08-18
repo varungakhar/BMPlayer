@@ -25,7 +25,7 @@ public protocol BMPlayerDelegate : class {
  - horizontal: horizontal
  - vertical:   vertical
  */
-enum BMPanDirection: Int {
+open enum BMPanDirection: Int {
     case horizontal = 0
     case vertical   = 1
 }
@@ -91,8 +91,8 @@ open class BMPlayer: UIView {
     /// 音量滑竿
     open var volumeViewSlider: UISlider!
     
-    open let BMPlayerAnimationTimeInterval: Double             = 4.0
-    open let BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
+    open var BMPlayerAnimationTimeInterval: Double             = 4.0
+    open var BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
     
     /// 用来保存时间状态
     open var sumTime         : TimeInterval = 0
