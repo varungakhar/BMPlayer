@@ -91,7 +91,7 @@ open class BMPlayer: UIView {
     /// 音量滑竿
     open var volumeViewSlider: UISlider!
     
-    open var BMPlayerAnimationTimeInterval: Double             = 4.0
+    open var BMPlayerAnimationTimeInterval: Double  = 4.0
     open var BMPlayerControlBarAutoFadeOutTimeInterval: Double = 0.5
     
     /// 用来保存时间状态
