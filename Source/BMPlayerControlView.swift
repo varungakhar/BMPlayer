@@ -631,13 +631,13 @@ open class BMPlayerControlView: UIView {
     
     func addSnapKitConstraint()
     {
-     
+        mainMaskView.backgroundColor = .blue
         bottomMaskView.backgroundColor = .red
         mainMaskView.frame = CGRect(x: 0, y: toppadding, width: UIScreen.main.bounds.size.width , height: UIScreen.main.bounds.size.height-bottompadding)
         maskImageView.frame = maskImageView.frame
         topMaskView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         topWrapperView.frame = CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
-        bottomMaskView.frame = CGRect(x: 0, y: 30, width: mainMaskView.frame.size.width, height: 50)
+        bottomMaskView.frame = CGRect(x: 0, y: mainMaskView.frame.size.height/2.0, width: mainMaskView.frame.size.width, height: 50)
         bottomWrapperView.frame =  CGRect(x: 0, y: 0, width: mainMaskView.frame.size.width, height: 50)
         backButton.frame = CGRect(x: 10, y: 0, width: 40, height: 40)
         
