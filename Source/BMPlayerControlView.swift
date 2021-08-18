@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 
 
-@objc public protocol BMPlayerControlViewDelegate: class {
+@objc public protocol BMPlayerControlViewDelegate: AnyObject {
     /**
      call when control view choose a definition
      
@@ -363,7 +363,7 @@ open class BMPlayerControlView: UIView {
             chooseDefinitionView.addSubview(button)
             button.addTarget(self, action: #selector(self.onDefinitionSelected(_:)), for: UIControl.Event.touchUpInside)
             button.snp.makeConstraints({ [weak self](make) in
-                guard let `self` = self else { return }
+                guard self != nil else { return }
                 make.top.equalTo(chooseDefinitionView.snp.top).offset(35 * i)
                 make.width.equalTo(50)
                 make.height.equalTo(25)
@@ -762,7 +762,14 @@ open class BMPlayerControlView: UIView {
     
     fileprivate func BMImageResourcePath(_ fileName: String) -> UIImage? {
     //    let bundle = Bundle(for: BMPlayer.self)
-        let image = UIImage(named: fileName)
+        let filepath = Bundle.main.path(forResource: fileName, ofType: "png")
+        
+        print("file path",filepath)
+        
+        let image = UIImage(named: fileName, in: .module, compatibleWith: nil)
+        
+        print("file path",image)
+        
         return image
     }
 }
