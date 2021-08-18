@@ -81,7 +81,7 @@ open class BMPlayerControlView: UIView {
     
     /// bottom view
     open var bottomWrapperView = UIView()
-    open var currentTimeLabel = UILabel()
+  //  open var currentTimeLabel = UILabel()
     open var totalTimeLabel   = UILabel()
     
     /// Progress slider
@@ -98,7 +98,7 @@ open class BMPlayerControlView: UIView {
     /* fullScreen button
      fullScreenButton.isSelected = player.isFullscreen
      */
-    open var fullscreenButton = UIButton(type: UIButton.ButtonType.custom)
+  //  open var fullscreenButton = UIButton(type: UIButton.ButtonType.custom)
     
     open var subtitleLabel    = UILabel()
     open var subtitleBackView = UIView()
@@ -127,7 +127,7 @@ open class BMPlayerControlView: UIView {
     open func playTimeDidChange(currentTime: TimeInterval, totalTime: TimeInterval)
     {
         let interval = totalTime - currentTime
-        currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
+    //    currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
         totalTimeLabel.text   = BMPlayer.formatSecondsToString(interval)
         timeSlider.value      = Float(currentTime) / Float(totalTime)
         showSubtile(from: resource?.subtitle, at: currentTime)
@@ -191,7 +191,7 @@ open class BMPlayerControlView: UIView {
         
         let targetTime = BMPlayer.formatSecondsToString(toSecound)
         timeSlider.value = Float(toSecound / totalDuration)
-        currentTimeLabel.text = targetTime
+      //  currentTimeLabel.text = targetTime
     }
     
     // MARK: - UI update related function
@@ -276,7 +276,7 @@ open class BMPlayerControlView: UIView {
      */
     open func updateUI(_ isForFullScreen: Bool) {
         isFullscreen = isForFullScreen
-        fullscreenButton.isSelected = isForFullScreen
+ //       fullscreenButton.isSelected = isForFullScreen
         chooseDefinitionView.isHidden = !BMPlayerConf.enableChooseDefinition || !isForFullScreen
         if isForFullScreen {
             if BMPlayerConf.topBarShowInCase.rawValue == 2 {
@@ -437,7 +437,7 @@ open class BMPlayerControlView: UIView {
       cancelAutoFadeOutAnimation()
       let currentTime = Double(sender.value) * totalDuration
       let interval = totalDuration - currentTime
-      currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
+   //   currentTimeLabel.text = BMPlayer.formatSecondsToString(currentTime)
       totalTimeLabel.text = BMPlayer.formatSecondsToString(interval)
       delegate?.controlView(controlView: self, slider: sender, onSliderEvent: .valueChanged)
     }
@@ -554,10 +554,10 @@ open class BMPlayerControlView: UIView {
         playButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_pause"), for: .selected)
         playButton.addTarget(self, action: #selector(onButtonPressed(_:)), for: .touchUpInside)
         
-        currentTimeLabel.textColor  = UIColor.white
-        currentTimeLabel.font       = UIFont.systemFont(ofSize: 12)
-        currentTimeLabel.text       = "00:00"
-        currentTimeLabel.textAlignment = NSTextAlignment.center
+//        currentTimeLabel.textColor  = UIColor.white
+//        currentTimeLabel.font       = UIFont.systemFont(ofSize: 12)
+//        currentTimeLabel.text       = "00:00"
+//        currentTimeLabel.textAlignment = NSTextAlignment.center
         
         totalTimeLabel.textColor    = UIColor.white
         totalTimeLabel.font         = UIFont.systemFont(ofSize: 12)
@@ -585,10 +585,10 @@ open class BMPlayerControlView: UIView {
         progressView.tintColor      = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6 )
         progressView.trackTintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0.3 )
         
-        fullscreenButton.tag = BMPlayerControlView.ButtonType.fullscreen.rawValue
-        fullscreenButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_fullscreen"),    for: .normal)
-        fullscreenButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_portialscreen"), for: .selected)
-        fullscreenButton.addTarget(self, action: #selector(onButtonPressed(_:)), for: .touchUpInside)
+//        fullscreenButton.tag = BMPlayerControlView.ButtonType.fullscreen.rawValue
+//        fullscreenButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_fullscreen"),    for: .normal)
+//        fullscreenButton.setImage(BMImageResourcePath("Pod_Asset_BMPlayer_portialscreen"), for: .selected)
+//        fullscreenButton.addTarget(self, action: #selector(onButtonPressed(_:)), for: .touchUpInside)
         
         mainMaskView.addSubview(loadingIndicator)
         
@@ -691,11 +691,11 @@ open class BMPlayerControlView: UIView {
             make.left.bottom.equalToSuperview()
         }
         
-        currentTimeLabel.snp.makeConstraints { [unowned self](make) in
-            make.left.equalTo(self.playButton.snp.right)
-            make.centerY.equalTo(self.playButton)
-            make.width.equalTo(40)
-        }
+//        currentTimeLabel.snp.makeConstraints { [unowned self](make) in
+//            make.left.equalTo(self.playButton.snp.right)
+//            make.centerY.equalTo(self.playButton)
+//            make.width.equalTo(40)
+//        }
         
         timeSlider.snp.makeConstraints { [unowned self](make) in
             make.centerY.equalTo(self.totalTimeLabel)
@@ -709,7 +709,7 @@ open class BMPlayerControlView: UIView {
         }
         
         totalTimeLabel.snp.makeConstraints { [unowned self](make) in
-            make.centerY.equalTo(self.currentTimeLabel)
+            make.centerY.equalTo(self.playButton)
             make.left.equalTo(self.timeSlider.snp.right).offset(5)
             make.width.equalTo(40)
         }
